@@ -4,33 +4,29 @@
   <a href="#"><img src="./docs/images/shop_screenshot.jpg" /></a>
 </p>
 
-The prupose of this mockup of a simple webshop is to demonstrate the sql injection vulnerability. In this project all database queries used are intentionally vulnerable to sql injection.
+L'objectif de cette maquette d'un simple site de vente en ligne est de montrer les vulnérabilités aux injections SQL. Dans ce projet, toutes les requêtes de base de données sont intentionnellement vulnérables aux injections SQL.
 
-### Filter
-The listed products can be filtered by the `Blend Name`. The userinput is not sanitized what makes it vulnerable for sql injections.
-* sort or filter by custom attribute
-* edit entries
-* drop table
-* drop database
-* list users from other table
+### Filtre produit
+Les produits listé peuvent être filtrés par arôme de café. La saisie utilisateur n'est pas controllée et "nettoyée" ce que la rend vulnérable aux injections SQL.
+* editer des entrées de la base
+* supprimer une table
+* supprimer une base
+* lister les utilisateurs stockés dans une table
 * ...
 
-### Login
-The login is also not protected against sql injection.
-A logged in user can add items to his cart; a user with admin privileges can additionally delete items.
-* login without any credentials
-* login as admin
-* give a user admin privileges
-* ...
+### Connexion
+La connexion n'est non plus pas protégée contre les injections SQL.
+Un utilisateur connecté peut ajouter des articles à son panier; un utilisateur avec des droits d'administration peut supprimer des produits.
+On peut donc, en utilisant une injection SQL, se connecter en tant qu'admin, ou en tant que n'importe quel utilisateur.
 
-### Recreate initial state
+### Recréer les tables par défauts
 
-At the bottom of the page, there is a button
-  <span><img height="15em" src="./docs/images/recreate.png" /></span>, which restores a pristine db state.
+En bas de page, il y a un bouton 
+  <span><img height="15em" src="./docs/images/recreate.png" /></span>, qui permet de restaurer la base de données et les tables.
 
 ## Setup
 
-Create in mysql a new user `sql_injection` and grant him all privileges only for the database `inject_demodb`. It's important to ensure no other databases are affected by the sql injection vulnerability.
+Dans MySQL, créez un nouvel utilisateur `sql_injection` et donnez lui tous les droits sur la base de données `inject_demodb` et seulement celle-ci. Il est important de s'assurer qu'aucune autre bdd ne sera affectée par des vulnérabilités aux injections SQL.
 
 ```SQL
 CREATE USER 'sql_injection'@'%' IDENTIFIED BY 'foobar';
@@ -38,15 +34,15 @@ GRANT ALL PRIVILEGES ON `inject_demodb` . * TO 'sql_injection'@'%';
 FLUSH PRIVILEGES;
 ```
 
-Create the Database `inject_demodb`:
+Créer la base de donnée `inject_demodb`:
 
 ```SQL
 CREATE DATABASE inject_demodb;
 ```
 
-Edit the `$host` in the file [connectdb.php](lib/connectdb.php).
+Editer le fichier [connectdb.php](lib/connectdb.php).
 
-The database `host`, `port`, `username` and `password` can be set over the following environment variables (in case you want to deploy it to a server):
+Les paramètres `host`, `port`, `username` et `password` pour la connexion au SGBD peuvent être paramétrés avec les varibles d'environnement suivantes: (au cas où vous souhaitez maitriser le déploiement):
 
 ```sh
 SQL_INJECTION_DB_HOST="localhost"
@@ -55,22 +51,4 @@ SQL_INJECTION_DB_USERNAME="sql_injection"
 SQL_INJECTION_DB_PASSWORD="foobar"
 ```
 
-Then serve `index.php` and click the a button `Recreate Table` which will create the table `coffee` in your database and seed some data. The data was created with the [faker-gem](https://github.com/stympy/faker) by @stympy.
-
-
-## Dokku deploy
-
-With dokku, the propper db management is handled by dokku itself when linking the app to mysql. The linking sets an ENV-Variable 'DATABASE_URL' which is then used to for the db connection.
-
-```sh
-$APP='sql-injection-demo'
-dokku apps:create $APP
-dokku mysql:create $APP
-dokku mysql:link $APP $APP
-
-dokku config:set --no-restart myapp DOKKU_LETSENCRYPT_EMAIL=your@email.tld
-dokku letsencrypt $APP
-
-# optional expose $APP
-dokku mysql:expose $APP
-```
+Configurer un web server pour éxécuter le fichier `index.php` et cliquez sur le bouton `Recréer la table` qui va créer la table `coffee` dans votre base de données et insérer quelques données. Les données ont été créées avec [faker-gem](https://github.com/stympy/faker) by @stympy.
