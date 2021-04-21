@@ -31,9 +31,9 @@
   } else {
     ?>
       <form class="form-inline" action="lib/login.php" method="post">
-        <input class="form-control mr-sm-2" type="text" placeholder="Username" name="username">
-        <input class="form-control mr-sm-2" type="password" placeholder="Passwort" name="password">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button>
+        <input class="form-control mr-sm-2" type="text" placeholder="Nom d'utilisateur" name="username">
+        <input class="form-control mr-sm-2" type="password" placeholder="Mot de passe" name="password">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Connexion</button>
       </form>
     <?php
   }
@@ -44,25 +44,25 @@
     unset($_SESSION['login_error']);
     ?>
     <div class="alert alert-danger" role="alert">
-      Login Failed. Username or Password is wrong.
+      Echec de connexion. Nom d'utilisateur ou mot de passe erroné.
     </div>
   <?php
 }
 ?>
-  <h1>Onlineshop Coffee</h1>
+  <h1>Café Online Shop</h1>
   <form action="index.php" method="get">
     <div class="form-group">
-      <label for="blendFilter">Blend Name</label>
-      <input type="text" class="form-control" id="blendFilter" name="blend" placeholder="Filter Blend Names" value=<?php echo ('"' . $filter . '"'); ?>>
+      <label for="blendFilter">Nom de l'arôme</label>
+      <input type="text" class="form-control" id="blendFilter" name="blend" placeholder="Filtrer les noms d'arôme de café" value=<?php echo ('"' . $filter . '"'); ?>>
     </div>
-    <button type="submit" class="btn btn-primary">Filter</button>
+    <button type="submit" class="btn btn-primary">Filtre</button>
   </form>
   <?php
   require_once('lib/show_table.php');
   show_table($filter);
   ?>
   <form action="lib/recreate_and_seed_db.php" method="post">
-    <button type="submit" class="btn btn-danger btn-sm">Recreate Table</button>
+    <button type="submit" class="btn btn-danger btn-sm">Récréer la table</button>
   </form>
 </body>
 

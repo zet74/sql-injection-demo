@@ -11,18 +11,18 @@ function show_table($blend_name)
   <table class="table border">
     <tr>
       <th>ID</th>
-      <th>BlendName</th>
-      <th>Origin</th>
-      <th>Variety</th>
+      <th>Nom de l'arôme</th>
+      <th>Origine</th>
+      <th>Variété</th>
       <th>Notes</th>
-      <th>Intensifier</th>
-      <th>Price</th>
+      <th>Goût</th>
+      <th>Prix</th>
       <?php
       if ($logged_in) {
         echo ("<th>Shop</th>");
       }
       if ($admin) {
-        echo ("<th>Löschen</th>");
+        echo ("<th>Supprimer</th>");
       }
       ?>
     </tr>
@@ -42,7 +42,7 @@ function show_table($blend_name)
       </div>
     </div>
     <br>
-    <h3>Kaffee</h3>
+    <h3>Notre sélection</h3>
     <?php
     $db = connectdb();
     // mysqli_multi_query is required to demonstrate all possible

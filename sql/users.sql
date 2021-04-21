@@ -11,5 +11,9 @@ CREATE TABLE users (
 
 INSERT INTO users (name, email, password, role)
 VALUES
-('test', 'test@mail.ch', 'test', 'consumer'),
-('admin', 'admin@mail.ch', 'admin', 'admin');
+('admin', 'admin@mail.fr', 'complexP@ssword???', 'admin'),
+('yanis', 'yanis@mail.fr', 'LeMotPasseCompliqué', 'consumer'),
+('lucas', 'lucas@mail.fr', 'LeMotPasseCompliqué2', 'consumer'),
+('jules', 'jules@mail.fr', 'LeMotPasseCompliqué3', 'consumer'),
+('haci', 'haci@mail.fr', 'LeMotPasseCompliqué4', 'consumer'),
+('alexandra', 'alexandra@mail.fr', 'LeMotPasseCompliqué5', 'consumer');
