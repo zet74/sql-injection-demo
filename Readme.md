@@ -42,7 +42,7 @@ CREATE DATABASE inject_demodb;
 
 Editer le fichier [connectdb.php](lib/connectdb.php).
 
-Les paramètres `host`, `port`, `username` et `password` pour la connexion au SGBD peuvent être paramétrés avec les varibles d'environnement suivantes: (au cas où vous souhaitez maitriser le déploiement):
+Optionnellement, les paramètres `host`, `port`, `username` et `password` pour la connexion au SGBD peuvent être paramétrés avec les variables d'environnement suivantes: (au cas où vous souhaitez maitriser le déploiement):
 
 ```sh
 SQL_INJECTION_DB_HOST="localhost"
