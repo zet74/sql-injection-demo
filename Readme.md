@@ -1,7 +1,7 @@
 # Demo SQL Injection
 
 <p align="center">
-  <a href="#"><img src="./docs/images/shop_screenshot.jpg" /></a>
+  <a href="#"><img src="./docs/images/shop_screenshot.png" /></a>
 </p>
 
 L'objectif de cette maquette d'un simple site de vente en ligne est de montrer les vulnérabilités aux injections SQL. Dans ce projet, toutes les requêtes de base de données sont intentionnellement vulnérables aux injections SQL.
