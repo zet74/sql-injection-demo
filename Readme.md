@@ -7,7 +7,7 @@
 L'objectif de cette maquette d'un simple site de vente en ligne est de montrer les vulnérabilités aux injections SQL. Dans ce projet, toutes les requêtes de base de données sont intentionnellement vulnérables aux injections SQL.
 
 ### Filtre produit
-Les produits listé peuvent être filtrés par arôme de café. La saisie utilisateur n'est pas controllée et "nettoyée" ce que la rend vulnérable aux injections SQL.
+Les produits listés peuvent être filtrés par arôme de café. La saisie utilisateur n'est pas controllée, ni "nettoyée" ce qui la rend vulnérable aux injections SQL.
 * editer des entrées de la base
 * supprimer une table
 * supprimer une base
