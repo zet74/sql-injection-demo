@@ -26,18 +26,18 @@ En bas de page, il y a un bouton
 
 ## Setup
 
+Créer la base de donnée `inject_demodb`:
+
+```SQL
+CREATE DATABASE inject_demodb;
+```
+
 Dans MySQL, créez un nouvel utilisateur `sql_injection` et donnez lui tous les droits sur la base de données `inject_demodb` et seulement celle-ci. Il est important de s'assurer qu'aucune autre bdd ne sera affectée par des vulnérabilités aux injections SQL.
 
 ```SQL
 CREATE USER 'sql_injection'@'%' IDENTIFIED BY 'foobar';
 GRANT ALL PRIVILEGES ON `inject_demodb` . * TO 'sql_injection'@'%';
 FLUSH PRIVILEGES;
-```
-
-Créer la base de donnée `inject_demodb`:
-
-```SQL
-CREATE DATABASE inject_demodb;
 ```
 
 Editer le fichier [connectdb.php](lib/connectdb.php).
