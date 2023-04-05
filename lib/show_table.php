@@ -48,6 +48,7 @@ function show_table($blend_name)
     // mysqli_multi_query is required to demonstrate all possible
     // sql-injection variants. With mysqli_query only the first
     // query statement is performed to prevent sql injection...
+    mysqli_report(MYSQLI_REPORT_OFF);
     $result = mysqli_multi_query($db, $query);
     if ($result) {
       $result = mysqli_use_result($db);
